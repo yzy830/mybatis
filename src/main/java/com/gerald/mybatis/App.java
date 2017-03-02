@@ -1,23 +1,21 @@
 package com.gerald.mybatis;
 
-import java.io.IOException;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import com.gerald.mybatis.service.BlogService;
 
-/**
- * Hello world!
- *
- */
+@SpringBootApplication
 public class App {
-    public static void main( String[] args ) throws IOException {
-        SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis.xml"), "development");
-        try(SqlSession session = sessionFactory.openSession()) {
-            Blog blog = (Blog)session.selectOne("com.gerald.mybatis.BlogMapper.selectBlog", 1);
-            
-            System.out.println("id = " + blog.getId() + ", name = " + blog.getName() + ", context = " + blog.getContext());
-        }   
+    public static void main(String[] args) {
+        ConfigurableApplicationContext context = SpringApplication.run(App.class, args);
+        
+        BlogService blogService = context.getBean(BlogService.class);
+        
+        blogService.mixLock1();
+        System.out.println("unlock");
+        blogService.mixLock2();
+        System.out.println("unlock");
     }
 }

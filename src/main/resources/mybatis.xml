@@ -13,8 +13,8 @@
         <property name="password" value=""/>
         <property name="driver.useUnicode" value="true"/>
         <property name="driver.characterEncoding" value="UTF-8"/>
-        <property name="driver.logger" value="com.gerald.mybatis.MySqlLogger"/>
-        <property name="driver.profileSQL" value="true"/>
+<!--         <property name="driver.logger" value="com.gerald.mybatis.MySqlLogger"/>
+        <property name="driver.profileSQL" value="true"/> -->
       </dataSource>
     </environment>
   </environments>

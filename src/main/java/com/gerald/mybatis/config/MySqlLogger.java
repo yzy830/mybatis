@@ -1,7 +1,8 @@
-package com.gerald.mybatis;
+package com.gerald.mybatis.config;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import com.mysql.jdbc.log.Log;
 
@@ -20,12 +21,12 @@ public class MySqlLogger implements Log {
 
 	@Override
 	public boolean isErrorEnabled() {
-		return logger.isErrorEnabled();
+		return logger.isEnabledFor(Level.ERROR);
 	}
 
 	@Override
 	public boolean isFatalEnabled() {
-		return logger.isFatalEnabled();
+		return logger.isEnabledFor(Level.FATAL);
 	}
 
 	@Override
@@ -40,7 +41,7 @@ public class MySqlLogger implements Log {
 
 	@Override
 	public boolean isWarnEnabled() {
-	    return logger.isWarnEnabled();
+	    return logger.isEnabledFor(Level.WARN);
 	}
 
 	@Override
