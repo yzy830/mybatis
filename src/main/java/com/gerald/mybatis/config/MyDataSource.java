@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -66,14 +67,18 @@ public class MyDataSource {
 	
 	@Bean
 	@Autowired
-	public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) {
+	public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource, org.apache.ibatis.session.Configuration config) {
 	    SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
-	    factory.setDataSource(dataSource);
-	    
-	    org.apache.ibatis.session.Configuration conf = new org.apache.ibatis.session.Configuration();
-	    factory.setConfiguration(conf);
+	    factory.setDataSource(dataSource);	    
+	    factory.setConfiguration(config);
 	    
 	    return factory;
+	}
+	
+	@Bean
+	@ConfigurationProperties(prefix="mybatis",ignoreUnknownFields = false)
+	public org.apache.ibatis.session.Configuration mybatisConfig() {
+	    return new org.apache.ibatis.session.Configuration();
 	}
 	
 	@Bean
