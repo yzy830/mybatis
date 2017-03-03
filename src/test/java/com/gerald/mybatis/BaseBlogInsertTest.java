@@ -8,7 +8,7 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gerald.mybatis.dao.BlogMapper;
+import com.gerald.mybatis.dao.compatable.BlogMapper;
 import com.gerald.mybatis.pojo.Blog;
 
 @RunWith(SpringJUnit4ClassRunner.class)

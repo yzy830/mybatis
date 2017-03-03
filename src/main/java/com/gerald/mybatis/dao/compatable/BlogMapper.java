@@ -1,4 +1,4 @@
-package com.gerald.mybatis.dao;
+package com.gerald.mybatis.dao.compatable;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;

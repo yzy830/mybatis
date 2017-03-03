@@ -1,4 +1,4 @@
-package com.gerald.mybatis.dao;
+package com.gerald.mybatis.dao.compatable;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,6 +1,5 @@
 package com.gerald.mybatis.config;
 
-import javax.annotation.PreDestroy;
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -15,16 +14,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
-//import org.springframework.jdbc.core.JdbcTemplate;
-//import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-//import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @EnableConfigurationProperties(MyDataSourceProperties.class)
 public class MyDataSource {
 	private org.apache.tomcat.jdbc.pool.DataSource pool;
 	
-	@Bean
+	@Bean(destroyMethod = "close")
 	@Autowired
 	public DataSource dataSource(MyDataSourceProperties dataSourceProperties) {
 		MyDataSourceProperties config = dataSourceProperties;		
@@ -58,7 +54,6 @@ public class MyDataSource {
 		return this.pool;
 	}
 
-	@PreDestroy
 	public void close() {
 		if (this.pool != null) {
 			this.pool.close();

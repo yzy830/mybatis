@@ -1,4 +1,4 @@
-package com.gerald.mybatis.service;
+package com.gerald.mybatis.service.compatable;
 
 public interface BlogService {
     void mixCommit();

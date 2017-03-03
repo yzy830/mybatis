@@ -1,11 +1,11 @@
-package com.gerald.mybatis.service;
+package com.gerald.mybatis.service.compatable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gerald.mybatis.dao.BlogDao;
-import com.gerald.mybatis.dao.BlogMapper;
+import com.gerald.mybatis.dao.compatable.BlogDao;
+import com.gerald.mybatis.dao.compatable.BlogMapper;
 import com.gerald.mybatis.pojo.Blog;
 
 @Service
